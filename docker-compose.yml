@@ -1,0 +1,17 @@
+services:
+  oracle-db:
+    image: gvenzl/oracle-free:latest
+    container_name: telco-oracle-db
+    ports:
+      - "1521:1521"
+    environment:
+      - ORACLE_PASSWORD=oracle
+      - APP_USER=TELCO_USER
+      - APP_USER_PASSWORD=telco_pass
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+      - ./TABLE_CREATION_SCRIPTS.sql:/container-entrypoint-initdb.d/01_tables.sql
+
+volumes:
+  oracle-data:
+    driver: local
