@@ -10,6 +10,7 @@ services:
       - APP_USER_PASSWORD=telco_pass
     volumes:
       - oracle-data:/opt/oracle/oradata
+      - ./TABLE_CREATION_SCRIPTS.sql:/container-entrypoint-initdb.d/01_tables.sql
 
 volumes:
   oracle-data:
